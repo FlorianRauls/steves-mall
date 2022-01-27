@@ -76,7 +76,7 @@ end
 -- the quantity of the item appears in the inventory
 local function countQuantities(comp, side, tupl)
     local count = countItem(comp, side, tupl[1])
-    return math.floor(count / tuple[2])
+    return math.floor(count / tupl[2])
 end
 
 
