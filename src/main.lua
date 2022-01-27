@@ -87,8 +87,9 @@ end
 -- Function which checks if a certain inventory fulfills the price requirements for a purchase
 local function checkForPriceReq(comp, side, prod, quant)
     -- 
-    local priceOfRequest = priceCatalogue[prod]
-    if countQuantities(comp, side, price) >= quant then
+    local priceOfRequest = priceOfRequest[prod]
+
+    if countQuantities(comp, side, priceOfRequest) >= quant then
         return true
     else
      -- does not meet requirement
