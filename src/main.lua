@@ -66,7 +66,7 @@ local function moveItems(comp, sideFrom, sideTo, item, count)
         local stack = comp.getStackInSlot(sideFrom, itemSlot)
         if stack["size"] >= count then
             -- find empty slot in sideTo
-            local emptySlot = findItem(comp, sideTo, "Air")
+            local emptySlot = findItem(comp, sideTo, nil)
             if emptySlot ~= nil then
                 -- move items
                 comp.transferItem(sideFrom, sideTo, count, itemSlot, emptySlot)
