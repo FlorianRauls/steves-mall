@@ -84,5 +84,5 @@ end
 print(findItem(transposer, northChest, "Gold Ingot"))
 print(countItem(transposer, northChest, "Gold Ingot"))
 moveItems(transposer, northChest, eastChest, "Gold Ingot", 1)
-print(countQuantities(transposer, northChest, ["Gold Ingot", 1]))
-print(countQuantities(transposer, northChest, ["Gold Ingot", 2]))
+print(countQuantities(transposer, northChest, {"Gold Ingot", 1}))
+print(countQuantities(transposer, northChest, {"Gold Ingot", 1}))
