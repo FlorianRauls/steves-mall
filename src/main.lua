@@ -47,6 +47,8 @@ end
 
 -- Table[#item : #price]
 
-showIventory(transposer, testChest)
+-- Function that kills the wither
+
+-- showIventory(transposer, testChest)
 print(findItem(transposer, testChest, "Gold Ingot"))
 print(countItem(transposer, testChest, "Gold Ingot"))
