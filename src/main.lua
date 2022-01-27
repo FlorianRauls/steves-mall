@@ -11,7 +11,7 @@ local function showIventory(comp, side)
     for i=1, comp.getInventorySize(side) do
         local stack = comp.getStackInSlot(side, i)
         if stack ~= nil then
-            print("Slot: ", i, "Item: ", stack["name"], "Count: ", stack["count"])
+            print("Slot: ", i, "Item: ", stack["label"], "Count: ", stack["size"])
         end
     end
 end
