@@ -25,6 +25,10 @@ local function showIventory(comp, side)
     end
 end
 
+local function prod2string(prod) 
+    return prod[1].."_"..tostring(prod[2])
+end
+
 -- Find item slot in inventory
 local function findItem(comp, side, item)
     for i=1, comp.getInventorySize(side) do
@@ -81,13 +85,13 @@ end
 
 -- Function which adds a new product to the catalogue
 local function addToCatalogue(product, price)
-    priceCatalogue[product] = price
+    priceCatalogue[prod2string(product)] = price
 end
 
 -- Function which checks if a certain inventory fulfills the price requirements for a purchase
 local function checkForPriceReq(comp, side, prod, quant)
     -- 
-    local priceOfRequest = priceOfRequest[prod]
+    local priceOfRequest = priceCatalogue[prod2string(prod)]
 
     if countQuantities(comp, side, priceOfRequest) >= quant then
         return true
@@ -95,6 +99,11 @@ local function checkForPriceReq(comp, side, prod, quant)
      -- does not meet requirement
         return false
     end
+end
+
+-- Function which fulfills a transaction from one inventory to the other
+local function purchase(comp, seller, buyer, prod, quant)
+    
 end
 
 
@@ -108,5 +117,3 @@ end
 
 addToCatalogue({"Gold Ingot", 1}, {"Iron Ingot", 1})
 
-print(checkForPriceReq(transposer, northChest, {"Gold Ingot", 1}, 3))
-print(checkForPriceReq(transposer, northChest, {"Gold Ingot", 1}, 5))
