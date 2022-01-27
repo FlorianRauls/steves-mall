@@ -16,4 +16,22 @@ local function showIventory(comp, side)
     end
 end
 
+-- Find item slot in inventory
+local function findItem(comp, side, item)
+    for i=1, comp.getInventorySize(side) do
+        local stack = comp.getStackInSlot(side, i)
+        if stack ~= nil then
+            if stack["label"] == item then
+                return i
+            end
+        end
+    end
+    return nil
+end
+
+-- Count occurence of item in inventory
+
+-- Table[#item : #price]
+
 showIventory(transposer, testChest)
+print(findItem(transposer, testChest, "Gold Ingot"))
