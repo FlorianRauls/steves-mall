@@ -6,6 +6,7 @@ local component = require("component")
 local transposer = component.transposer
 local northChest = sides.north
 local westChest = sides.west
+local eastChest = sides.east
 
 -- needed variables
 -- Catalogue of structure
@@ -72,4 +73,4 @@ end
 -- showIventory(transposer, testChest)
 print(findItem(transposer, northChest, "Gold Ingot"))
 print(countItem(transposer, northChest, "Gold Ingot"))
-moveItems(transposer, northChest, northChest, "Gold Ingot", 1)
+moveItems(transposer, northChest, eastChest, "Gold Ingot", 1)
