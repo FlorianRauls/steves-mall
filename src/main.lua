@@ -58,7 +58,14 @@ local function moveItems(comp, sideFrom, sideTo, item, count)
     if itemSlot ~= nil then
         local stack = comp.getStackInSlot(sideFrom, itemSlot)
         if stack["size"] >= count then
-            comp.transferItem(sideFrom, sideTo, itemSlot, count)
+            -- find empty slot in sideTo
+            local emptySlot = findItem(comp, sideTo, "empty")
+            if emptySlot ~= nil then
+                -- move items
+                comp.transferItem(sideFrom, sideTo, count, itemSlot, emptySlot)
+            else
+                print("No empty slot in ", sideTo)
+            end
         else
             print("Not enough items in slot: ", itemSlot)
         end
@@ -77,5 +84,5 @@ end
 print(findItem(transposer, northChest, "Gold Ingot"))
 print(countItem(transposer, northChest, "Gold Ingot"))
 moveItems(transposer, northChest, eastChest, "Gold Ingot", 1)
-print(countQuantities(transposer, northChest, ("Gold Ingot", 1)))
-print(countQuantities(transposer, northChest, ("Gold Ingot", 2)))
+print(countQuantities(transposer, northChest, ["Gold Ingot", 1]))
+print(countQuantities(transposer, northChest, ["Gold Ingot", 2]))
