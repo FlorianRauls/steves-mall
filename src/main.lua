@@ -67,10 +67,15 @@ end
 
 -- Function which takes a tuple with (item, quantity) and looks up how often
 -- the quantity of the item appears in the inventory
-
+local function countQuantities(comp, side, tupl)
+    local count = countItem(comp, side, tupl[1])
+    return math.floor(count / tuple[2])
+end
 
 
 -- showIventory(transposer, testChest)
 print(findItem(transposer, northChest, "Gold Ingot"))
 print(countItem(transposer, northChest, "Gold Ingot"))
 moveItems(transposer, northChest, eastChest, "Gold Ingot", 1)
+print(countQuantities(transposer, northChest, ("Gold Ingot", 1)))
+print(countQuantities(transposer, northChest, ("Gold Ingot", 2)))
