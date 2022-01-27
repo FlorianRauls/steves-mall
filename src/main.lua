@@ -81,7 +81,7 @@ end
 
 -- Function which adds a new product to the catalogue
 local function addToCatalogue(product, price)
-    priceCatalogue.insert(product, price)
+    priceCatalogue[product] = price
 end
 
 
