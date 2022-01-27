@@ -92,6 +92,10 @@ end
 -- print(countQuantities(transposer, northChest, {"Gold Ingot", 1}))
 -- print(countQuantities(transposer, northChest, {"Gold Ingot", 2}))
 
-print(priceCatalogue)
+for key, value in pairs(priceCatalogue) do
+    print('\t', key, value)
+end
 addToCatalogue({"Gold Ingot", 1}, {"Iron Ingot", 1})
-print(priceCatalogue)
+for key, value in pairs(priceCatalogue) do
+    print('\t', key, value)
+end
