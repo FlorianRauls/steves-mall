@@ -95,6 +95,7 @@ end
 for key, value in pairs(priceCatalogue) do
     print('\t', key, value)
 end
+
 addToCatalogue({"Gold Ingot", 1}, {"Iron Ingot", 1})
 for key, value in pairs(priceCatalogue) do
     print('\t', key, value)
