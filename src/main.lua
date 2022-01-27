@@ -126,13 +126,24 @@ local function purchase(comp, seller, buyer, prod, quant)
 end
 
 
+-- TODO
+-- Function which creates a button based on a Product (should include Product x Quantity and Price x Quantity)
+-- Button must only be active while there is product in stock
+-- For further information look at buttonAPI.lua
+-- Or https://oc.cil.li/topic/255-button-api-now-for-oc-updated-9-6-2014/
+
+-- Function which goes through all offers and creates a button based on them
+-- Should run after a transaction is done
+
+-- Functionality for seller to Create, Delete and Edit Offers
+
+-- TESTING AREA
 -- showIventory(transposer, testChest)
 -- print(findItem(transposer, northChest, "Gold Ingot"))
 -- print(countItem(transposer, northChest, "Gold Ingot"))
 -- moveItems(transposer, northChest, eastChest, "Gold Ingot", 1)
 -- print(countQuantities(transposer, northChest, {"Gold Ingot", 1}))
 -- print(countQuantities(transposer, northChest, {"Gold Ingot", 2}))
-
 
 addToCatalogue({"Gold Ingot", 1}, {"Iron Ingot", 1})
 purchase(transposer, northChest, eastChest, {"Gold Ingot", 1}, 1)
