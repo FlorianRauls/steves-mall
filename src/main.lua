@@ -30,8 +30,23 @@ local function findItem(comp, side, item)
 end
 
 -- Count occurence of item in inventory
+local function countItem(comp, side, item)
+    local count = 0
+    for i=1, comp.getInventorySize(side) do
+        local stack = comp.getStackInSlot(side, i)
+        if stack ~= nil then
+            if stack["label"] == item then
+                count = count + stack["size"]
+            end
+        end
+    end
+    return count
+end
+
+
 
 -- Table[#item : #price]
 
 showIventory(transposer, testChest)
 print(findItem(transposer, testChest, "Gold Ingot"))
+print(countItem(transposer, testChest, "Gold Ingot"))
