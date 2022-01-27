@@ -4,7 +4,15 @@ local component = require("component")
 
 -- test variables
 local transposer = component.transposer
-local testChest = sides.north
+local northChest = sides.north
+local westChest = sides.west
+
+-- needed variables
+-- Catalogue of structure
+-- {
+-- ("Gold", 1) : ("Iron", 1)   
+-- }
+local priceCatalogue = {}
 
 -- Function which prints inventory attached to side of comp to the screen
 local function showIventory(comp, side)
@@ -43,12 +51,25 @@ local function countItem(comp, side, item)
     return count
 end
 
+-- Function which moves items from one inventory to another
+local function moveItems(comp, sideFrom, sideTo, item, count)
+    local itemSlot = findItem(comp, sideFrom, item)
+    if itemSlot ~= nil then
+        local stack = comp.getStackInSlot(sideFrom, itemSlot)
+        if stack["size"] >= count then
+            comp.transferItem(sideFrom, sideTo, itemSlot, count)
+        else
+            print("Not enough items in slot: ", itemSlot)
+        end
+    end
+end
+
+-- Function which takes a tuple with (item, quantity) and looks up how often
+-- the quantity of the item appears in the inventory
 
 
--- Table[#item : #price]
-
--- Function that kills the wither
 
 -- showIventory(transposer, testChest)
-print(findItem(transposer, testChest, "Gold Ingot"))
-print(countItem(transposer, testChest, "Gold Ingot"))
+print(findItem(transposer, northChest, "Gold Ingot"))
+print(countItem(transposer, northChest, "Gold Ingot"))
+moveItems(transposer, northChest, northChest, "Gold Ingot", 1)
