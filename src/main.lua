@@ -13,7 +13,7 @@ local eastChest = sides.east
 -- {
 -- ("Gold", 1) : ("Iron", 1)   
 -- }
-local priceCatalogue = {}
+priceCatalogue = {}
 
 -- Function which prints inventory attached to side of comp to the screen
 local function showIventory(comp, side)
@@ -79,10 +79,19 @@ local function countQuantities(comp, side, tupl)
     return math.floor(count / tupl[2])
 end
 
+-- Function which adds a new product to the catalogue
+local function addToCatalogue(product, price)
+    priceCatalogue.insert(product, price)
+end
+
 
 -- showIventory(transposer, testChest)
-print(findItem(transposer, northChest, "Gold Ingot"))
-print(countItem(transposer, northChest, "Gold Ingot"))
-moveItems(transposer, northChest, eastChest, "Gold Ingot", 1)
-print(countQuantities(transposer, northChest, {"Gold Ingot", 1}))
-print(countQuantities(transposer, northChest, {"Gold Ingot", 1}))
+-- print(findItem(transposer, northChest, "Gold Ingot"))
+-- print(countItem(transposer, northChest, "Gold Ingot"))
+-- moveItems(transposer, northChest, eastChest, "Gold Ingot", 1)
+-- print(countQuantities(transposer, northChest, {"Gold Ingot", 1}))
+-- print(countQuantities(transposer, northChest, {"Gold Ingot", 2}))
+
+print(priceCatalogue)
+addToCatalogue({"Gold Ingot", 1}, {"Iron Ingot", 1})
+print(priceCatalogue)
