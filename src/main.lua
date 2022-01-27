@@ -1,6 +1,7 @@
 -- imports
 local sides = require("sides")
 local component = require("component")
+local buttons = require("buttonAPI")
 
 -- test variables
 local transposer = component.transposer
