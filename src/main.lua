@@ -84,6 +84,18 @@ local function addToCatalogue(product, price)
     priceCatalogue[product] = price
 end
 
+-- Function which checks if a certain inventory fulfills the price requirements for a purchase
+local function checkForPriceReq(comp, side, prod, quant)
+    -- 
+    local priceOfRequest = priceCatalogue[prod]
+    if countQuantities(comp, side, price) >= quant then
+        return true
+    else
+     -- does not meet requirement
+        return false
+    end
+end
+
 
 -- showIventory(transposer, testChest)
 -- print(findItem(transposer, northChest, "Gold Ingot"))
@@ -92,11 +104,8 @@ end
 -- print(countQuantities(transposer, northChest, {"Gold Ingot", 1}))
 -- print(countQuantities(transposer, northChest, {"Gold Ingot", 2}))
 
-for key, value in pairs(priceCatalogue) do
-    print('\t', key, value)
-end
 
 addToCatalogue({"Gold Ingot", 1}, {"Iron Ingot", 1})
-for key, value in pairs(priceCatalogue) do
-    print('\t', key, value)
-end
+
+print(checkForPriceReq(transposer, northChest, {"Gold Ingot", 1}, 3))
+print(checkForPriceReq(transposer, northChest, {"Gold Ingot", 1}, 5))
