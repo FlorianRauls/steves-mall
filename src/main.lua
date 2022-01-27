@@ -33,6 +33,9 @@ end
 local function findItem(comp, side, item)
     for i=1, comp.getInventorySize(side) do
         local stack = comp.getStackInSlot(side, i)
+        if item == nil and stack == nil then
+            return i
+        end
         if stack ~= nil then
             if stack["label"] == item then
                 return i
@@ -63,12 +66,12 @@ local function moveItems(comp, sideFrom, sideTo, item, count)
         local stack = comp.getStackInSlot(sideFrom, itemSlot)
         if stack["size"] >= count then
             -- find empty slot in sideTo
-            local emptySlot = findItem(comp, sideTo, "empty")
+            local emptySlot = findItem(comp, sideTo, "Air")
             if emptySlot ~= nil then
                 -- move items
                 comp.transferItem(sideFrom, sideTo, count, itemSlot, emptySlot)
             else
-                print("No empty slot in ", sideTo)
+                print("No empty slot in inventory No.", sideTo)
             end
         else
             print("Not enough items in slot: ", itemSlot)
@@ -101,9 +104,24 @@ local function checkForPriceReq(comp, side, prod, quant)
     end
 end
 
+-- Function which fulfills a single trade
+local function trade(comp, seller, buyer, prod)
+    -- Give wares
+    local waresNeeded = prod[2]
+    moveItems(comp, seller, buyer, prod[1], prod[2])
+
+    -- Give coins
+    local price = priceCatalogue[prod2string(prod)]
+    local coinsNeeded = price[2]
+    moveItems(comp, buyer, seller, price[1], price[2])
+    
+end
+
 -- Function which fulfills a transaction from one inventory to the other
 local function purchase(comp, seller, buyer, prod, quant)
-    
+    for i=1, quant do
+        trade(comp, seller, buyer, prod)
+    end
 end
 
 
@@ -116,4 +134,4 @@ end
 
 
 addToCatalogue({"Gold Ingot", 1}, {"Iron Ingot", 1})
-
+purchase(transposer, northChest, eastChest, {"Gold Ingot", 1}, 1)
