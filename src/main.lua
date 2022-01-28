@@ -167,7 +167,7 @@ function getClick()
 
 function buttons.fillTable()
     for k, v in pairs(priceCatalogue) do
-        buttons.setTable("Flash", test1, 10,20*i,3,5)  
+        buttons.setTable(k, test1, 10,20*i,3,5)  
     end
     buttons.screen()
 end
