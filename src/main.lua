@@ -6,7 +6,6 @@ local gpu = component.gpu
 local event = require("event")
 local computer = require("computer")
 local term = require("term")
-local rs = component.redstone
 local colors = require("colors")
 
 
