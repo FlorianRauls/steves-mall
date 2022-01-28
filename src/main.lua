@@ -174,7 +174,7 @@ end
 function buttons.fillTable()
     local i = 1
     for k, v in pairs(priceCatalogue) do
-        buttons.setTable(k, test1, 10,20*i,3,5)
+        buttons.setTable(k, test1, 10,20,3,5*i)
         i = i+1  
     end
     buttons.screen()
