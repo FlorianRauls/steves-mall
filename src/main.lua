@@ -161,25 +161,25 @@ function getClick()
       gpu.set(h, w, ".")
       gpu.set(h, w, " ")
     else 
-      API.checkxy(x,y)
+      buttons.checkxy(x,y)
     end
   end
 
-function API.fillTable()
-    API.setTable("Flash", test1, 10,20,3,5)  
-    API.screen()
+function buttons.fillTable()
+    buttons.setTable("Flash", test1, 10,20,3,5)  
+    buttons.screen()
 end
   
 function test1()
-    API.flash("Flash",0.01)
+    buttons.flash("Flash",0.01)
 end
 
 term.setCursorBlink(false)
 gpu.setResolution(80, 25)
-API.clear()
-API.fillTable()
-API.heading("Button API Demo! Created in CC by DW20, ported to OC by MoparDan!")
-API.label(1,24,"A sample Label.")
+buttons.clear()
+buttons.fillTable()
+buttons.heading("Button buttons Demo! Created in CC by DW20, ported to OC by MoparDan!")
+buttons.label(1,24,"A sample Label.")
  
 while true do
   getClick()
