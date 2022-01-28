@@ -2,6 +2,13 @@
 local sides = require("sides")
 local component = require("component")
 local buttons = require("buttonAPI")
+local gpu = component.gpu
+local event = require("event")
+local computer = require("computer")
+local term = require("term")
+local rs = component.redstone
+local colors = require("colors")
+
 
 -- test variables
 local transposer = component.transposer
@@ -147,3 +154,37 @@ end
 
 addToCatalogue({"Gold Ingot", 1}, {"Iron Ingot", 1})
 purchase(transposer, northChest, eastChest, {"Gold Ingot", 1}, 1)
+
+function getClick()
+    local _, _, x, y = event.pull(1,touch)
+    if x == nil or y == nil then
+      local h, w = gpu.getResolution()
+      gpu.set(h, w, ".")
+      gpu.set(h, w, " ")
+    else 
+      API.checkxy(x,y)
+    end
+  end
+
+function API.fillTable()
+    API.setTable("Flash", test1, 10,20,3,5)  
+    API.screen()
+end
+  
+function test1()
+    API.flash("Flash",0.01)
+end
+
+term.setCursorBlink(false)
+gpu.setResolution(80, 25)
+API.clear()
+API.fillTable()
+API.heading("Button API Demo! Created in CC by DW20, ported to OC by MoparDan!")
+API.label(1,24,"A sample Label.")
+ 
+while true do
+  getClick()
+end
+
+
+
