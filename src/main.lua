@@ -152,6 +152,8 @@ end
 -- print(countQuantities(transposer, northChest, {"Gold Ingot", 2}))
 
 addToCatalogue({"Gold Ingot", 1}, {"Iron Ingot", 1})
+addToCatalogue({"Gold Ingot", 5}, {"Iron Ingot", 5})
+addToCatalogue({"Cobalt Ingot", 5}, {"Iron Ingot", 5})
 purchase(transposer, northChest, eastChest, {"Gold Ingot", 1}, 1)
 
 function getClick()
@@ -165,6 +167,10 @@ function getClick()
     end
   end
 
+function test1()
+    buttons.flash("Flash", 0.01)
+end
+
 function buttons.fillTable()
     local i = 1
     for k, v in pairs(priceCatalogue) do
@@ -174,9 +180,7 @@ function buttons.fillTable()
     buttons.screen()
 end
   
-function test1()
-    buttons.flash("Flash",0.01)
-end
+
 
 term.setCursorBlink(false)
 gpu.setResolution(80, 25)
