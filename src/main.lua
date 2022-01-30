@@ -160,6 +160,11 @@ purchase(transposer, northChest, eastChest, {"Gold Ingot", 1}, 1)
 -- print priceCatalogue
 print(priceCatalogue)
 
+-- function to get a string from an entry of the priceCatalogue with the format "quantity_item"
+local function getStringFromEntry(entry)
+    return entry[1].."_"..tostring(entry[2])
+end
+
 function getClick()
     local _, _, x, y = event.pull(1,touch)
     if x == nil or y == nil then
@@ -175,10 +180,16 @@ function test1()
     buttons.flash("Flash", 0.01)
 end
 
+-- confimation of purchase printed to screen in a function 
+function confirmPurchase(prod, quant)
+    print("You have bought "..prod[1].." x "..tostring(quant).." for "..tostring(quant*priceCatalogue[prod2string(prod)][2]).." "..priceCatalogue[prod2string(prod)][1])
+end
+
 function buttons.fillTable()
     local i = 1
     for k, v in pairs(priceCatalogue) do
-        buttons.setTable(k, test1, 10,20,3,5*i)
+        -- setTable: name, func, xmin, xmax, ymin, ymax 
+        buttons.setTable(k, confirmPurchase(), 10, 20, 3, 5*i)
         i = i+1  
     end
     buttons.screen()
