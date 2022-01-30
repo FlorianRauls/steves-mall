@@ -98,6 +98,7 @@ local function addToCatalogue(product, price)
     priceCatalogue[prod2string(product)] = price
 end
 
+
 -- Function which checks if a certain inventory fulfills the price requirements for a purchase
 local function checkForPriceReq(comp, side, prod, quant)
     -- 
@@ -156,6 +157,9 @@ addToCatalogue({"Gold Ingot", 5}, {"Iron Ingot", 5})
 addToCatalogue({"Cobalt Ingot", 5}, {"Iron Ingot", 5})
 purchase(transposer, northChest, eastChest, {"Gold Ingot", 1}, 1)
 
+-- print priceCatalogue
+print(priceCatalogue)
+
 function getClick()
     local _, _, x, y = event.pull(1,touch)
     if x == nil or y == nil then
@@ -185,10 +189,9 @@ end
 term.setCursorBlink(false)
 gpu.setResolution(80, 25)
 buttons.clear()
-buttons.fillTable()
-buttons.heading("Button buttons Demo! Created in CC by DW20, ported to OC by MoparDan!")
-buttons.label(1,24,"A sample Label.")
- 
+-- buttons.fillTable()
+buttons.heading("Steves Mall")
+
 while true do
   getClick()
 end
